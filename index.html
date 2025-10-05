@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>روضة الأطفال التفاعلية بالكربوس</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="footer-styles.css">
+</head>
+<body>
+    <div id="app"></div>
+    
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <div class="footer-ticker">
+                <div class="footer-main-info">
+                    <span class="footer-label">فكرة وإعداد المساعد الإداري:</span>
+                    <span class="footer-name">فاطمة محمد صغير مغفوري</span>
+                </div>
+                <span class="footer-divider"></span>
+                <div class="footer-sub-info">
+                    <span class="footer-icon">🏫</span>
+                    <span>جازان - قرية الكربوس - روضة أطفال الكربوس</span>
+                </div>
+                <span class="footer-divider"></span>
+                <div class="footer-year">© 2025</div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Load scripts in order -->
+    <script src="activities.js"></script>
+    <script src="gemini-features.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

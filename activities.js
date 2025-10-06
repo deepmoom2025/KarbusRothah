@@ -3,6 +3,14 @@
 // ========================================
 
 // ==========================================
+// دالة تحويل الأرقام الإنجليزية إلى العربية
+// ==========================================
+function toArabicNumerals(num) {
+    const arabicNumerals = ['٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩'];
+    return String(num).replace(/[0-9]/g, (d) => arabicNumerals[parseInt(d, 10)]);
+}
+
+// ==========================================
 // 1. الأنشطة العربية - Arabic Activities
 // ==========================================
 
@@ -284,7 +292,7 @@ function initMathActivitiesMenu() {
                 <button class="submenu-card" onclick="showCountingActivity()">
                     <div class="submenu-icon">🔢</div>
                     <div class="submenu-title">العد</div>
-                    <div class="submenu-desc">تعلم الأرقام من 1-10</div>
+                    <div class="submenu-desc">تعلم الأرقام من ١-١٠</div>
                 </button>
                 <button class="submenu-card" onclick="showShapeRecognition()">
                     <div class="submenu-icon">⭐</div>
@@ -340,7 +348,7 @@ function showCountingActivity() {
                 <h2 class="activity-title">🔢 نشاط العد</h2>
                 
                 <div class="counting-display">
-                    <div class="counting-number">${current.number}</div>
+                    <div class="counting-number">${toArabicNumerals(current.number)}</div>
                     <div class="counting-word">${current.arabicName}</div>
                     <div class="counting-items">
                         ${emojiArray.map((emoji, idx) => `
@@ -458,7 +466,7 @@ function showShapeRecognition() {
         container.innerHTML = `
             <div class="shape-quiz">
                 <h2 class="activity-title">🎯 اختبار الأشكال</h2>
-                <div class="score-display">النقاط: ${score}</div>
+                <div class="score-display">النقاط: ${toArabicNumerals(score)}</div>
                 
                 <div class="quiz-question">
                     <p>اختر الشكل:</p>
@@ -665,11 +673,11 @@ function showAdditionSubtraction() {
                     <div class="progress-info">
                         <div class="progress-text">
                             <span>🎯</span>
-                            <span>السؤال ${currentQuestion}/${questionsPerLevel}</span>
+                            <span>السؤال ${toArabicNumerals(currentQuestion)}/${toArabicNumerals(questionsPerLevel)}</span>
                         </div>
                         <div class="score-badge">
                             <span>⭐</span>
-                            <span>${score}</span>
+                            <span>${toArabicNumerals(score)}</span>
                         </div>
                     </div>
                     <div class="progress-bar">
@@ -680,9 +688,9 @@ function showAdditionSubtraction() {
                 <div class="math-problem-card-enhanced" id="problemCard">
                     <div class="problem-display">
                         <div class="math-problem-big">
-                            <span class="number">${currentProblem.num1}</span>
+                            <span class="number">${toArabicNumerals(currentProblem.num1)}</span>
                             <span class="operation-emoji">${currentProblem.operation === '+' ? '➕' : '➖'}</span>
-                            <span class="number">${currentProblem.num2}</span>
+                            <span class="number">${toArabicNumerals(currentProblem.num2)}</span>
                             <span class="equals">=</span>
                             <span class="question-mark">؟</span>
                         </div>
@@ -707,7 +715,7 @@ function showAdditionSubtraction() {
                             <button class="math-option-enhanced" 
                                     onclick="checkMathAnswer(${ans})"
                                     style="background: ${colors[idx % 4]};">
-                                ${ans}
+                                ${toArabicNumerals(ans)}
                             </button>
                         `;
                     }).join('')}
@@ -805,7 +813,7 @@ function showAdditionSubtraction() {
                 <p class="celebration-text">أكملت المستوى بنجاح!</p>
                 <div class="celebration-score">
                     <span class="celebration-emoji">🏆</span>
-                    <span class="celebration-points">${score} نقطة</span>
+                    <span class="celebration-points">${toArabicNumerals(score)} نقطة</span>
                 </div>
                 <div class="celebration-stars-row">⭐⭐⭐</div>
                 <button class="celebration-button" onclick="continueMathActivity()">
@@ -851,11 +859,11 @@ function showComparisonActivity() {
         container.innerHTML = `
             <div class="comparison-activity">
                 <h2 class="activity-title">⚖️ نشاط المقارنة</h2>
-                <div class="score-display">النقاط: ${score}</div>
+                <div class="score-display">النقاط: ${toArabicNumerals(score)}</div>
                 
                 <div class="comparison-display">
                     <div class="comparison-side">
-                        <div class="number-large">${problem.num1}</div>
+                        <div class="number-large">${toArabicNumerals(problem.num1)}</div>
                         <div class="emoji-count">${'🍎'.repeat(Math.min(problem.num1, 10))}</div>
                     </div>
                     
@@ -864,7 +872,7 @@ function showComparisonActivity() {
                     </div>
                     
                     <div class="comparison-side">
-                        <div class="number-large">${problem.num2}</div>
+                        <div class="number-large">${toArabicNumerals(problem.num2)}</div>
                         <div class="emoji-count">${'🍊'.repeat(Math.min(problem.num2, 10))}</div>
                     </div>
                 </div>
@@ -974,14 +982,14 @@ function showOrderingActivity() {
         container.innerHTML = `
             <div class="ordering-activity">
                 <h2 class="activity-title">📊 ترتيب الأرقام</h2>
-                <div class="score-display">النقاط: ${score}</div>
+                <div class="score-display">النقاط: ${toArabicNumerals(score)}</div>
                 
                 <p class="instruction">رتب الأرقام من الأصغر إلى الأكبر</p>
 
                 <div class="ordered-slots">
                     ${Array(5).fill(0).map((_, idx) => `
                         <div class="order-slot ${selectedNumbers[idx] ? 'filled' : 'empty'}">
-                            ${selectedNumbers[idx] || '؟'}
+                            ${selectedNumbers[idx] ? toArabicNumerals(selectedNumbers[idx]) : '؟'}
                         </div>
                     `).join('')}
                 </div>
@@ -991,7 +999,7 @@ function showOrderingActivity() {
                         <button class="number-choice ${selectedNumbers.includes(num) ? 'used' : ''}" 
                                 onclick="selectNumber(${num})"
                                 ${selectedNumbers.includes(num) ? 'disabled' : ''}>
-                            ${num}
+                            ${toArabicNumerals(num)}
                         </button>
                     `).join('')}
                 </div>
